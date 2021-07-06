@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from updates.views import (
-    json_example_view,
-    JsonCBV,
-    JsonCBV2,
-    SerializedListView,
-    SerializedDetailView,
-)
+# from updates.views import (
+#     json_example_view,
+#     JsonCBV,
+#     JsonCBV2,
+#     SerializedListView,
+#     SerializedDetailView,
+# )
 
 urlpatterns = [
     path('admin/', admin.site.urls),

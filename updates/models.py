@@ -5,7 +5,7 @@ from django.db import models
 
 
 def upload_update_image(instance, filename):
-    return "updates/{user)/{filename}".format(user=instance.user, filename=filename)
+    return "updates/{user}/{filename}".format(user=instance.user, filename=filename)
 
 
 class UpdateQuerySet(models.QuerySet):
@@ -17,14 +17,18 @@ class UpdateQuerySet(models.QuerySet):
     #     qs = self
     #     final_array = []
     #     for obj in qs:
-    #         struct = json.loads(obj.serialize())
-    #         final_array.append(obj.serialize())
+    #         stuct = json.loads(obj.serialize())
+    #         final_array.append(stuct)
     #     return json.dumps(final_array)
 
     def serialize(self):
         list_values = list(self.values("user", "content", "image", "id"))
-        print(list_values)
         return json.dumps(list_values)
+
+    # def serialize(self):
+    #     list_values = list(self.values("user", "content", "image", "id"))
+    #     print(list_values)
+    #     return json.dumps(list_values)
 
 
 class UpdateManager(models.Manager):
@@ -45,6 +49,8 @@ class Update(models.Model):
         return self.content or ""
 
     def serialize(self):
+        json_data = serialize("json", [self], fields=('user', 'content', 'image'))
+        stuct = json.loads(json_data)
         try:
             image = self.image.url
         except:

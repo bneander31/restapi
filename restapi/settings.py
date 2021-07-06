@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -29,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vitaapi.apps.VitaapiConfig',
     'updates',
+
 ]
 
 MIDDLEWARE = [

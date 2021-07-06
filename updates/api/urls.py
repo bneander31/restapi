@@ -6,7 +6,6 @@ from .views import (
 )
 
 urlpatterns = {
-
-    path('', UpdateModelListAPIView.as_view()),
+    path('', UpdateModelListAPIView.as_view()), # api/updates/ - List/Create
     path('<id>/', UpdateModelDetailAPIView.as_view()),
 }
